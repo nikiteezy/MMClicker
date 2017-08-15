@@ -5,12 +5,11 @@ using UnityEngine.UI;
 
 public class mainScript : MonoBehaviour {
 	public Text scoreLbl;				//Лэйбл вывода очков
-
-
+	public GameObject shopPanel;
 
 
 	public int timer;					//Таймер, отсчитывает секунды со старта игры
-	public float score = 0.0001F;		//Главные очки
+	public long score = 0;		//Главные очки
 	const float bitcoinRate = 0.000004F;//Отношение биткоина к рублю
 	public int ratio = 5;				//Коэффициент для нажатия
 
@@ -43,5 +42,15 @@ public class mainScript : MonoBehaviour {
 	public void OnClickCoin()
 	{
 		score += ratio;
+	}
+
+	public void clicOnShopBtn()
+	{
+		shopPanel.SetActive(true);
+	}
+
+	public void clicOnCloseShopBtn()
+	{
+		shopPanel.SetActive (false);
 	}
 }

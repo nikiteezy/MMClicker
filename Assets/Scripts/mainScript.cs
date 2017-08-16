@@ -8,10 +8,12 @@ public class mainScript : MonoBehaviour {
 	public GameObject shopPanel;
 
 
-	public int timer;					//Таймер, отсчитывает секунды со старта игры
-	public long score = 0;		//Главные очки
+	int timer;							//Таймер, отсчитывает секунды со старта игры
+    long score = 0;						//Главные очки
 	const float bitcoinRate = 0.000004F;//Отношение биткоина к рублю
-	public int ratio = 5;				//Коэффициент для нажатия
+	int ratio = 5;						//Коэффициент для нажатия
+	int passiveBonus = 0;
+	int clickBonus = 1;
 
 	void Start () 
 	{
@@ -35,13 +37,13 @@ public class mainScript : MonoBehaviour {
 		if (timer < (int)Time.time) 
 		{
 			timer = (int)Time.time;
-			score++;
+			score += passiveBonus;
 		} 
 	}
 
 	public void OnClickCoin()
 	{
-		score += ratio;
+		score += ratio*clickBonus;
 	}
 
 	public void clicOnShopBtn()
@@ -52,5 +54,15 @@ public class mainScript : MonoBehaviour {
 	public void clicOnCloseShopBtn()
 	{
 		shopPanel.SetActive (false);
+	}
+
+	public void passiveBonusBtn()
+	{
+		passiveBonus++;
+	}
+
+	public void clickBonusBtn()
+	{
+		clickBonus++;
 	}
 }

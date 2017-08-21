@@ -20,7 +20,11 @@ public class mainScript : MonoBehaviour {
 
 	void Start () 
 	{
-		
+		score = PlayerPrefs.GetInt ("score");
+		passiveBonus = PlayerPrefs.GetInt ("passiveBonus");
+		nuberPassiveBonus.text = "" + passiveBonus;
+		clickBonus = PlayerPrefs.GetInt ("clickBonus");
+		numberClickBonus.text = "" + clickBonus;
 	}
 
 	void Update () 
@@ -47,6 +51,7 @@ public class mainScript : MonoBehaviour {
 	public void OnClickCoin()
 	{
 		score += ratio*clickBonus;
+		PlayerPrefs.SetInt ("score",(int)score);
 	}
 
 	public void clicOnShopBtn()
@@ -66,6 +71,7 @@ public class mainScript : MonoBehaviour {
 			score -= bonusCost;
 			passiveBonus++;
 			nuberPassiveBonus.text = "" + passiveBonus;
+			PlayerPrefs.SetInt ("passiveBonus", passiveBonus);
 		}
 	}
 
@@ -76,6 +82,7 @@ public class mainScript : MonoBehaviour {
 			score -= bonusCost;
 			clickBonus++;
 			numberClickBonus.text = "" + clickBonus;
+			PlayerPrefs.SetInt ("clickBonus", clickBonus);
 		}
 	}
 }
